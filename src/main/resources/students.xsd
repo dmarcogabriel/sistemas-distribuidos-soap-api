@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="sistemas-distribuidos/soap-api"
+        targetNamespace="sistemas-distribuidos/soap-api"
+        elementFormDefault="qualified"
+>
+    <xs:complexType name="StudentType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="nome" type="xs:string" />
+            <xs:element name="curso" type="xs:string" />
+            <xs:element name="semestre" type="xs:int" />
+            <xs:element name="ra" type="xs:string" />
+            <xs:element name="cpf" type="xs:string" />
+            <xs:element name="cidade" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+                <xs:element name="nome" type="xs:string" />
+                <xs:element name="curso" type="xs:string" />
+                <xs:element name="semestre" type="xs:int" />
+                <xs:element name="ra" type="xs:string" />
+                <xs:element name="cpf" type="xs:string" />
+                <xs:element name="cidade" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStudentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="student" type="tns:StudentType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+                <xs:element name="nome" type="xs:string" />
+                <xs:element name="curso" type="xs:string" />
+                <xs:element name="semestre" type="xs:int" />
+                <xs:element name="ra" type="xs:string" />
+                <xs:element name="cpf" type="xs:string" />
+                <xs:element name="cidade" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStudentsRequest" />
+    <xs:element name="getStudentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="students" type="tns:StudentType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+                <xs:element name="nome" type="xs:string" />
+                <xs:element name="curso" type="xs:string" />
+                <xs:element name="semestre" type="xs:int" />
+                <xs:element name="ra" type="xs:string" />
+                <xs:element name="cpf" type="xs:string" />
+                <xs:element name="cidade" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+                <xs:element name="nome" type="xs:string" />
+                <xs:element name="curso" type="xs:string" />
+                <xs:element name="semestre" type="xs:int" />
+                <xs:element name="ra" type="xs:string" />
+                <xs:element name="cpf" type="xs:string" />
+                <xs:element name="cidade" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
