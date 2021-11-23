@@ -5,7 +5,7 @@
         targetNamespace="sistemas-distribuidos/soap-api"
         elementFormDefault="qualified"
 >
-    <xs:complexType name="StudentType">
+    <xs:complexType name="Student">
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
             <xs:element name="nome" type="xs:string" />
@@ -21,20 +21,34 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="id" type="xs:int" />
-                <xs:element name="nome" type="xs:string" />
-                <xs:element name="curso" type="xs:string" />
-                <xs:element name="semestre" type="xs:int" />
-                <xs:element name="ra" type="xs:string" />
-                <xs:element name="cpf" type="xs:string" />
-                <xs:element name="cidade" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getStudentResponse">
+    <xs:element name="studentResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="student" type="tns:StudentType" />
+                <xs:element name="student" type="tns:Student" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStudentsRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="studentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element
+                        name="student"
+                        type="tns:Student"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -49,15 +63,6 @@
                 <xs:element name="ra" type="xs:string" />
                 <xs:element name="cpf" type="xs:string" />
                 <xs:element name="cidade" type="xs:string" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="getStudentsRequest" />
-    <xs:element name="getStudentsResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="students" type="tns:StudentType" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -80,12 +85,6 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="id" type="xs:int" />
-                <xs:element name="nome" type="xs:string" />
-                <xs:element name="curso" type="xs:string" />
-                <xs:element name="semestre" type="xs:int" />
-                <xs:element name="ra" type="xs:string" />
-                <xs:element name="cpf" type="xs:string" />
-                <xs:element name="cidade" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

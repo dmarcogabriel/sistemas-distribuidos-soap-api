@@ -4,8 +4,8 @@
 >
     <soapenv:Header />
     <soapenv:Body>
-        <us:getStudentRequest>
-            <us:nome>Peter</us:nome>
-        </us:getStudentRequest>
+        <us:deleteStudentRequest>
+            <us:id>2</us:id>
+        </us:deleteStudentRequest>
     </soapenv:Body>
 </soapenv:Envelope>

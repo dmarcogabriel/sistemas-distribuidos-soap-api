@@ -1,0 +1,17 @@
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:us="sistemas-distribuidos/soap-api"
+>
+    <soapenv:Header />
+    <soapenv:Body>
+        <us:updateStudentRequest>
+            <us:id>1</us:id>
+            <us:nome>Peter</us:nome>
+            <us:curso>Sistemas de Informação</us:curso>
+            <us:semestre>4</us:semestre>
+            <us:cidade>Marília</us:cidade>
+            <us:cpf>11122233344</us:cpf>
+            <us:ra>123456</us:ra>
+        </us:updateStudentRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

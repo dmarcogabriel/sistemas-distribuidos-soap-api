@@ -1,7 +1,8 @@
 package com.sistemas.soapapi.service;
 
 import org.springframework.stereotype.Service;
-import sistemas_distribuidos.soap_api.StudentType;
+import sistemas_distribuidos.soap_api.Student;
+import sistemas_distribuidos.soap_api.UpdateStudentRequest;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -9,26 +10,21 @@ import java.util.Objects;
 
 @Service
 public class StudentService {
-    private static final ArrayList<StudentType> students = new ArrayList<StudentType>();
+    private static final ArrayList<Student> students = new ArrayList<Student>();
+    private static int nextId;
 
-    @PostConstruct
-    public void initialize(){
-        StudentType student = new StudentType();
-        student.setId(1);
-        student.setNome("Peter");
-        student.setCurso("Sistemas de Informação");
-        student.setSemestre(3);
-        student.setRa("123456");
-        student.setCpf("11122233344");
-        student.setCidade("Marília");
-
-        students.add(student);
+    public StudentService(){
+        nextId = 1;
     }
 
-    public static StudentType getStudent(String name) {
-        StudentType student = new StudentType();
+    private static void incrementId(){
+        nextId++;
+    }
+
+    public static Student getStudent(int id) {
+        Student student = new Student();
         students.forEach((s) -> {
-            if (Objects.equals(s.getNome(), name)) {
+            if (Objects.equals(s.getId(), id)) {
                 student.setId(s.getId());
                 student.setNome(s.getNome());
                 student.setCurso(s.getCurso());
@@ -41,7 +37,38 @@ public class StudentService {
         return student;
     }
 
-    public ArrayList<StudentType> getStudents(){
-        return students;
+    public static Student createStudent(Student student) {
+        student.setId(nextId);
+        incrementId();
+        students.add(student);
+        return student;
+    }
+
+    public static Student updateStudent(int id, UpdateStudentRequest data) {
+        Student updatedStudent = null;
+        for (Student student : students) {
+            if (student.getId() == id) {
+                student.setNome(data.getNome());
+                student.setCurso(data.getCurso());
+                student.setSemestre(data.getSemestre());
+                student.setRa(data.getRa());
+                student.setCpf(data.getCpf());
+                student.setCidade(data.getCidade());
+                updatedStudent = student;
+            }
+        }
+        return updatedStudent;
+    }
+
+    public static Student deleteStudent(int id) {
+        Student removed = null;
+        for (Student student : students) {
+            if (student.getId() == id) {
+                students.remove(students.indexOf(student));
+                System.out.println("Removido: " + student.getNome());
+                removed = student;
+            }
+        }
+        return removed;
     }
 }
