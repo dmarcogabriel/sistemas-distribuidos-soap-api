@@ -11,9 +11,10 @@ import sistemas_distribuidos.soap_api.*;
 @Endpoint
 public class StudentEndpoint {
     @Autowired private StudentService studentService;
+    private static final String NAMESPACE = "sistemas-distribuidos/soap-api";
 
     @PayloadRoot(
-            namespace = "sistemas-distribuidos/soap-api",
+            namespace = NAMESPACE,
             localPart = "getStudentRequest"
     )
     @ResponsePayload
@@ -24,7 +25,7 @@ public class StudentEndpoint {
     }
 
     @PayloadRoot(
-            namespace = "sistemas-distribuidos/soap-api",
+            namespace = NAMESPACE,
             localPart = "createStudentRequest"
     )
     @ResponsePayload
@@ -43,24 +44,35 @@ public class StudentEndpoint {
     }
 
     @PayloadRoot(
-            namespace = "sistemas-distribuidos/soap-api",
+            namespace = NAMESPACE,
             localPart = "updateStudentRequest"
     )
     @ResponsePayload
-    public StudentResponse updateStudentRequest(@RequestPayload UpdateStudentRequest request) {
-        StudentResponse response = new StudentResponse();
-        response.setStudent(studentService.updateStudent(request.getId(), request));
+    public MessageResponse updateStudentRequest(@RequestPayload UpdateStudentRequest request) {
+        MessageResponse response = new MessageResponse();
+        response.setMessage(studentService.updateStudent(request.getId(), request));
         return response;
     }
 
     @PayloadRoot(
-            namespace = "sistemas-distribuidos/soap-api",
+            namespace = NAMESPACE,
             localPart = "deleteStudentRequest"
     )
     @ResponsePayload
-    public StudentResponse deleteStudentRequest(@RequestPayload DeleteStudentRequest request) {
-        StudentResponse response = new StudentResponse();
-        response.setStudent(studentService.deleteStudent(request.getId()));
+    public MessageResponse deleteStudentRequest(@RequestPayload DeleteStudentRequest request) {
+        MessageResponse response = new MessageResponse();
+        response.setMessage(studentService.deleteStudent(request.getId()));
+        return response;
+    }
+
+    @PayloadRoot(
+            namespace = NAMESPACE,
+            localPart = "getStudentsRequest"
+    )
+    @ResponsePayload
+    public StudentsResponse getStudentsRequest() {
+        StudentsResponse response = new StudentsResponse();
+        response.setStudents(studentService.getStudents());
         return response;
     }
 }

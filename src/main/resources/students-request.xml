@@ -1,0 +1,10 @@
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:us="sistemas-distribuidos/soap-api"
+>
+    <soapenv:Header />
+    <soapenv:Body>
+        <us:getStudentsRequest>
+        </us:getStudentsRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
